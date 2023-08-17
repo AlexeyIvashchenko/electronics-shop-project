@@ -5,7 +5,7 @@ from src.item import Item
 
 @pytest.fixture
 def test_instance():
-    instance = Item  # Замените на имя вашего класса
+    instance = Item("Кружка", 100, 20)
     instance.price = 100.0
     instance.pay_rate = 0.9
     return instance
