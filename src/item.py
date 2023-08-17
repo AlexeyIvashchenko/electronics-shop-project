@@ -1,4 +1,5 @@
-from csv import DictReader
+import csv
+import os
 
 
 class Item:
@@ -35,15 +36,16 @@ class Item:
 
     @classmethod
     def instantiate_from_csv(cls):
+        script_directory = os.path.dirname(os.path.abspath(__file__))
+        file_path = os.path.join(script_directory, "items.csv")
+
         counter = 1
-        file = "items.csv"
-         with open("items.csv", "r") as file:
-            cls.name, cls.price, cls.quantity = file.readline(counter).split(',')
-        if counter == 5:
-            counter = 1
-        else:
-            counter += 1
+        with open(file_path, newline='', encoding='cp1251') as csvfile:
+            reader = csv.DictReader(csvfile)
+            for row in reader:
+                example = Item(row['name'], row['price'], row['quantity'])
+                counter += 1
 
     @staticmethod
-    def string_to_number():
-        return int(all)
+    def string_to_number(s):
+        return int(float(s))
