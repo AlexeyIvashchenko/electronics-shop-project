@@ -15,11 +15,18 @@ class Item:
         self.quantity = quantity
         self.all.append(self)
 
+    def __repr__(self):
+        return f"Item('{self.name}', {self.price}, {self.quantity})"
+
+    def __str__(self):
+        return self.name
+
     def calculate_total_price(self) -> float:
         return self.price * self.quantity
 
     def apply_discount(self) -> None:
-        return self.price * self.pay_rate
+        self.price *= self.pay_rate
+        return self.price
 
     @property
     def name(self):

@@ -53,3 +53,15 @@ if __name__ == "__main__":
     import pytest
 
     pytest.main()
+
+
+def test_repr_method():
+    item = Item("Смартфон", 10000, 20)
+    expected_repr = "Item('Смартфон', 10000, 20)"
+    assert repr(item) == expected_repr
+
+
+def test_str_method():
+    item = Item("Смартфон", 10000, 20)
+    expected_str = "Смартфон"
+    assert str(item) == expected_str
