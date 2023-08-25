@@ -21,6 +21,12 @@ class Item:
     def __str__(self):
         return self.name
 
+    def __add__(self, other):
+        if isinstance(other, Item):
+            return self.quantity + other.quantity
+        else:
+            return "This operation doesn't callable"
+
     def calculate_total_price(self) -> float:
         return self.price * self.quantity
 
